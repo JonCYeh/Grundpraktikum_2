@@ -1,0 +1,60 @@
+\documentclass{beamer}
+%\mode<presentation>
+\usetheme{Pittsburgh}
+\usecolortheme{dolphin}
+\usefonttheme[onlylarge]{structuresmallcapsserif}
+\usefonttheme[onlysmall]{structurebold}
+
+
+\defbeamertemplate*{footline}{Berkeley} %% neuer name auch hier
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=0.124\paperwidth,ht=2.ex,dp=1ex,left]{date in head/foot}%
+    {\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} }
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamercolor{framesource}{fg=gray}
+\setbeamerfont{framesource}{size=\tiny}
+\setbeamerfont{frametitle}{size=\small}
+\setbeamerfont{framesubtitle}{size=\small}
+
+
+\usepackage[utf8x]{inputenc}
+\usepackage{german}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{textcomp}
+\usepackage{color}
+\usetikzlibrary{arrows}
+\usepackage{subfigure}
+\newcommand{\un}[1]{\, \mathrm{#1}}
+
+
+\author{ \textbf{Oxana Maurer},\\  Jannik Lüke,\\ Christian Eckhardt,\\ Jonathan Conrad}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\frametitle{\b{Grundpraktikum II}}
+\framesubtitle{\b{Versuch: Optik I}}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+\input{Testding}
+\input{Copy_paste}
+\input{Fancy_Aufzaehlungen}
+%\input{}
+\end{document}

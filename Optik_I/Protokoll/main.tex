@@ -1,0 +1,114 @@
+\documentclass[a4paper,25pt,twoside]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage[utf8x]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{esdiff}
+%\usepackage{ upgreek }
+\usepackage{geometry}
+\usepackage{floatflt}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{pgf}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{textcomp}
+\usepackage{color}
+\usetikzlibrary{arrows}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+
+\newcommand{\titel}{Optik I}
+\newcommand{\none}{Oxana Maurer}
+\newcommand{\ntwo}{Jannik Lüke}
+\newcommand{\nthree}{Christian Eckhardt}
+\newcommand{\nfour}{Jonathan Conrad}
+\newcommand{\names}{Gruppe A6: \\ \none \\ \ntwo \\  \nthree \\ \nfour}
+\newcommand{\namestab}{\none \par \ntwo \\  \nthree \par \nfour}
+\newcommand{\un}[1]{\, \mathrm{#1}}
+\newcommand{\cor}[1]{ \footnote{\textcolor{red}{#1}}} 
+
+\title{Versuch: Optik I}
+\author{\names}
+\date{\today}
+
+\pdfinfo{%
+  /Title    (Versuchsabschnitt 1)
+  /Author   ()
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+
+\pagestyle{fancy}
+\fancyhead{}
+\renewcommand\headrule{}
+
+\fancyfoot{}
+
+\fancyhead[LE]{ 
+     \begin{tabular}[b]{|l|r|l|}\hline
+     \begin{tabular}[b]{c}
+     Seite \\ 
+     \thepage \\
+     \end{tabular}
+     &
+     \begin{tabular}[b]{|ll|ll|}
+     \none & () & \ntwo & ()  \\ \hline
+     \nthree & () & \nfour & () \\
+     \end{tabular}
+     &
+     \begin{tabular}[b]{c}
+     Grundpraktikum II \\ 
+     \titel \\
+     \end{tabular}  \\ \hline
+     \end{tabular}     
+}
+
+\fancyhead[RO]{ 
+    \begin{tabular}[b]{|c|l|r|}\hline
+    \hfill \includegraphics[width=0.07 \textwidth]{lightsabers.png} \hspace{15pt}
+    &
+    \begin{tabular}[b]{l}
+    \leftmark \\ \hline
+    \rightmark \\
+    \end{tabular}
+    &
+    \begin{tabular}[b]{c}
+    Seite \\ 
+    \thepage \\
+    \end{tabular} \\ \hline
+    \end{tabular}
+}
+
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Einleitung}
+Blablablablabla
+
+\input{Testkapitel}
+%\input{}
+%\input{}
+%\input{}
+
+\end{document}
