@@ -1,0 +1,207 @@
+\documentclass[16pt]{beamer}
+%\mode<presentation>
+\usetheme{Berlin}
+\setbeamertemplate{footline}[frame number]
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{color}
+
+\title{Tutorium 3}
+\author{Stefan Heimersheim
+	\\\texttt{stefan.heimersheim@rwth-aachen.de}}
+\date{13. November 2015}
+
+\lstset{language=C++}
+\lstset{showstringspaces=false,keywordstyle=\color{blue}}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\section{Statische 1D Felder}
+\subsection{Überblick}
+\begin{frame}
+  \begin{itemize}
+    \item Mehrere Variablen eines Typs
+    \item Sequenz von Daten
+    \item Konstante Größe
+    \item Intern konstante Zeigern (beschränkte Zeigerarithmetik)
+  \end{itemize}
+  \begin{itemize}
+    \item \texttt{int i[3];}
+    \item \texttt{const int n=3;}
+    \item \texttt{int i[n];}
+    \item \texttt{int i[3]=\{1,2,3\};}
+    \item \texttt{i[0]=1;}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \begin{itemize}
+    \item Mehrere Variablen eines Typs
+    \item Sequenz von Daten
+    \item Konstante Größe
+    \item Intern konstante Zeigern (beschränkte Zeigerarithmetik)
+  \end{itemize}
+  \begin{itemize}
+    \item \texttt{int i[3];}
+    \item \texttt{const int n=3;}
+    \item \texttt{int i[n];}
+    \item \texttt{int i[3]=\{1,2,3\};}
+    \item \texttt{i[0]=1;}
+  \end{itemize}
+\end{frame}
+
+\subsection{Hautpspeichermodell}
+\begin{frame}
+  %\includegraphics[width=0.8\textwidth]{images/speicher1.pdf}
+\end{frame}
+
+\section{Zeigerarithmetik}
+\subsection{Überblick}
+\begin{frame}
+  \begin{itemize}
+    \item Addition einer ganzen Zahl k auf einen Zeiger p (Zeiger auf eine Variable des Typs T) liefert einen Zeiger gleichen Typs mit einem um $k\cdot sizeof(T)$ (k mal die Größe des von Variablen vom Typ T belegten Speichers in Byte) höheren Wert
+    \item Eventuell nützlich für Navigation in Feldern
+    \item Unübersichtlicher Code, Zugriff auf unsinnige Bereiche
+  \end{itemize}
+\end{frame}
+
+\subsection{Beispiel}
+\begin{frame}
+  %\includegraphics[width=0.8\textwidth]{images/zeigerarith1.pdf}
+\end{frame}
+
+\subsection{Erinnerung: Konstanten}
+\begin{frame}
+  \textbf{Abstimmung: Was ist erlaubt?}
+  \\\texttt{int const * b=\&a}%a=*b ist konst
+  \begin{itemize}
+    \item \texttt{cout << (*b)++;}%Falsch
+    \item \texttt{cout << *(b++);}%Richtig
+    \item \texttt{cout << *b++;}%Richtig
+  \end{itemize}
+  Zeigerarithmetik auf Feldern:
+  \begin{itemize}
+    \item \texttt{cout << *(i+1);} geht
+    \item \texttt{i=i+1;} geht nur bei dynamischen Feldern
+  \end{itemize}
+  Statische Felder sind als konstante Zeiger realisiert
+\end{frame}
+\begin{frame}
+  \textbf{Abstimmung: Was ist erlaubt?}
+  \\\texttt{int const * b=\&a}%a=*b ist konst
+  \begin{itemize}
+    \item \texttt{cout << (*b)++;}%Falsch
+    \item \texttt{cout << *(b++);}%Richtig
+    \item \texttt{cout << *b++;}%Richtig
+  \end{itemize}
+  Zeigerarithmetik auf Feldern:
+  \begin{itemize}
+    \item \texttt{cout << *(i+1);} geht
+    \item \texttt{i=i+1;} geht nur bei dynamischen Feldern
+  \end{itemize}
+  Statische Felder sind als konstante Zeiger realisiert
+\end{frame}
+
+\section{Dynamische 1D Felder}
+\subsection{Überblick}
+\begin{frame}[fragile]
+Felder im Heap
+  \begin{itemize}
+    \item Größe variabel
+    \item eigene Speicherverwaltung
+    \item delete[] nicht vergessen
+  \end{itemize}
+  \begin{lstlisting}
+  int i=3;
+  float* fv=new float[i];
+  fv[0]=10;
+  delete[] fv;
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Hautpspeichermodell}
+\begin{frame}
+ %\includegraphics[width=0.8\textwidth]{images/speicher2.pdf}
+\end{frame}
+
+\section{Statische \protect\textit{n}D Felder}
+\subsection{Überblick}
+\begin{frame}[fragile]
+  \begin{itemize}
+    \item Mehrdimensionale Felder
+    \item Matritzen, Tensoren, ...
+  \end{itemize}
+  \begin{lstlisting}
+  int a[2][3];
+  int b[2][3]={{1,2,3},{4,5,6}};
+  int c[2][3]={1,2,3,4,5,6};
+  int d[2][3]={{1,2},{3,4},{5,6}}; //Fehler
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Reihenfolge}
+\begin{frame}[fragile]
+  \begin{lstlisting}
+   int a[2][3]={{1,2,3},{4,5,6}};
+	cout << &a[0][0] << endl;
+	cout << &a[0][1] << endl;
+	cout << &a[0][2] << endl;
+	cout << &a[1][0] << endl;
+	cout << &a[1][1] << endl;
+	cout << &a[1][2] << endl;
+
+	0x7fff41d43010
+	0x7fff41d43014
+	0x7fff41d43018
+	0x7fff41d4301c
+	0x7fff41d43020
+	0x7fff41d43024
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Hautpspeichermodell}
+\begin{frame}
+ %\includegraphics[width=0.8\textwidth]{images/speicher3.pdf}
+\end{frame}
+
+\section{Dynamische \protect\textit{n}D Felder}
+\subsection{Überblick}
+\begin{frame}[fragile]
+  Beispielcode:
+  \begin{lstlisting}
+    int** m = new int* [2];
+    m[0] = new int[3];
+    m[1] = new int[3];
+    ...
+    delete[] m[0];
+    delete[] m[1];
+    delete[] m;
+  \end{lstlisting}
+  Oft in for-Schleifen genutzt:
+  \begin{lstlisting}
+  int n=2,m=3;
+  int** matrix = new int*[n];
+  for(int i=0;i<n;i++) matrix[i]=new int[m];
+  ...
+  for(int i=0;i<n;i++) delete[] matrix[i];
+  delete[] matrix;
+  \end{lstlisting}
+\end{frame}
+
+\subsection{Hauptspeichermodell}
+\begin{frame}
+ %\includegraphics[width=0.8\textwidth]{images/speicher4.pdf}
+\end{frame}
+
+
+\end{document}

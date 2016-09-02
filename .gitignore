@@ -1,0 +1,28 @@
+#Python
+
+*.pyc
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# ignore TeX files that are generated in a build:
+*.aux
+*.log
+*.out
+*.toc
+*.backup
+*.tex~
+*.tdo
+main.pdf
+MainPraesi.pdf
+mainPraes.pdf
+*.gz
+# more TeX beamer files files that are generated in a build:
+*.nav
+*.snm
